@@ -500,41 +500,16 @@ public class AddressBook {
      * @return feedback display message for the operation result
      */
     private static String executeDeletePerson(String commandArgs) {
-        if (!isDeletePersonArgsValid(commandArgs)) {
+        if (!isPersonArgsValid(commandArgs)) {
             return getMessageForInvalidCommandInput(COMMAND_DELETE_WORD, getUsageInfoForDeleteCommand());
         }
-        final int targetVisibleIndex = extractTargetIndexFromDeletePersonArgs(commandArgs);
+        final int targetVisibleIndex = extractTargetIndexFromPersonArgs(commandArgs);
         if (!isDisplayIndexValidForLastPersonListingView(targetVisibleIndex)) {
             return MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
         }
         final String[] targetInModel = getPersonByLastVisibleIndex(targetVisibleIndex);
         return deletePersonFromAddressBook(targetInModel) ? getMessageForSuccessfulDelete(targetInModel) // success
                                                           : MESSAGE_PERSON_NOT_IN_ADDRESSBOOK; // not found
-    }
-
-    /**
-     * Checks validity of delete person argument string's format.
-     *
-     * @param rawArgs raw command args string for the delete person command
-     * @return whether the input args string is valid
-     */
-    private static boolean isDeletePersonArgsValid(String rawArgs) {
-        try {
-            final int extractedIndex = Integer.parseInt(rawArgs.trim()); // use standard libraries to parse
-            return extractedIndex >= DISPLAYED_INDEX_OFFSET;
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-    }
-
-    /**
-     * Extracts the target's index from the raw delete person args string
-     *
-     * @param rawArgs raw command args string for the delete person command
-     * @return extracted index
-     */
-    private static int extractTargetIndexFromDeletePersonArgs(String rawArgs) {
-        return Integer.parseInt(rawArgs.trim());
     }
 
     /**
@@ -556,6 +531,31 @@ public class AddressBook {
      */
     private static String getMessageForSuccessfulDelete(String[] deletedPerson) {
         return String.format(MESSAGE_DELETE_PERSON_SUCCESS, getMessageForFormattedPersonData(deletedPerson));
+    }
+
+    /**
+     * Checks validity of delete person argument string's format.
+     *
+     * @param rawArgs raw command args string for the delete person command
+     * @return whether the input args string is valid
+     */
+    private static boolean isPersonArgsValid(String rawArgs) {
+        try {
+            final int extractedIndex = Integer.parseInt(rawArgs.trim()); // use standard libraries to parse
+            return extractedIndex >= DISPLAYED_INDEX_OFFSET;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+
+    /**
+     * Extracts the target's index from the raw delete person args string
+     *
+     * @param rawArgs raw command args string for the delete person command
+     * @return extracted index
+     */
+    private static int extractTargetIndexFromPersonArgs(String rawArgs) {
+        return Integer.parseInt(rawArgs.trim());
     }
 
     /**
