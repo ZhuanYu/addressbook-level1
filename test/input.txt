@@ -100,6 +100,47 @@
   list
 
 ##########################################################
+# test update person command
+##########################################################
+
+  # should add correctly
+  add William Brown p/111111 e/will@gmail.com
+  list
+  add Ned Choo p/222222 e/nedchoo@nus.edu.sg
+  list
+
+  # should catch invalid args format
+  update
+  update should be only one number
+  update 1 wrong args wrong args
+  update 1 Valid Name p/12345 valid@email.butNoPrefix
+  update 1 Valid Name 12345 e/valid@email.butPhonePrefixMissing
+
+  # should catch invalid index
+  update -1 Adam Tan p/222222 e/adamT@gmail.com
+  update 0 Adam Tan p/222222 e/adamT@gmail.com
+  update 3 Adam Tan p/222222 e/adamT@gmail.com
+
+  # should catch invalid person data
+  update 1 []\[;] p/12345 e/valid@e.mail
+  update 1 Valid Name p/not_numbers e/valid@e.mail
+  update 1 Valid Name p/12345 e/notAnEmail
+
+  # should update correctly
+  update 1 Adam Tan p/222222 e/adamT@gmail.com
+  list
+
+  # listing indexes get updated on next request
+  update 2 Adam Ban p/222222 e/adamB@gmail.com
+  list
+
+  # order of phone and email should not matter
+  update 1 Charlie Dickson e/charlie.d@nus.edu.sg p/333333
+  list
+  update 2 Dickson Ee e/dickson@nus.edu.sg p/444444
+  list
+
+##########################################################
 # test exit command
 ##########################################################
 

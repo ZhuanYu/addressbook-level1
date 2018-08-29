@@ -36,3 +36,5 @@ FC actual.txt expected.txt
 
 REM return to previous directory
 popd
+
+cmd /k

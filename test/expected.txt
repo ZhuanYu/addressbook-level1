@@ -66,6 +66,10 @@
 || 	Parameters: INDEX
 || 	Example: delete 1
 || 
+|| update: Updates a person identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX NAME p/PHONE_NUMBER e/EMAIL
+|| 	Example: update 1 John Doe p/98765432 e/johnd@gmail.com
+|| 
 || clear: Clears address book permanently.
 || 	Example: clear
 || 
@@ -274,6 +278,132 @@
 || Enter command: || [Command entered:  list]
 || 
 || 0 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  add William Brown p/111111 e/will@gmail.com]
+|| New person added: William Brown, Phone: 111111, Email: will@gmail.com
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. William Brown  Phone Number: 111111  Email: will@gmail.com
+|| 
+|| 1 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  add Ned Choo p/222222 e/nedchoo@nus.edu.sg]
+|| New person added: Ned Choo, Phone: 222222, Email: nedchoo@nus.edu.sg
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. William Brown  Phone Number: 111111  Email: will@gmail.com
+|| 	2. Ned Choo  Phone Number: 222222  Email: nedchoo@nus.edu.sg
+|| 
+|| 2 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  update]
+|| Invalid command format: update 
+|| update: Updates a person identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX NAME p/PHONE_NUMBER e/EMAIL
+|| 	Example: update 1 John Doe p/98765432 e/johnd@gmail.com
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  update should be only one number]
+|| Invalid command format: update 
+|| update: Updates a person identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX NAME p/PHONE_NUMBER e/EMAIL
+|| 	Example: update 1 John Doe p/98765432 e/johnd@gmail.com
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  update 1 wrong args wrong args]
+|| Invalid command format: update 
+|| update: Updates a person identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX NAME p/PHONE_NUMBER e/EMAIL
+|| 	Example: update 1 John Doe p/98765432 e/johnd@gmail.com
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  update 1 Valid Name p/12345 valid@email.butNoPrefix]
+|| Invalid command format: update 
+|| update: Updates a person identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX NAME p/PHONE_NUMBER e/EMAIL
+|| 	Example: update 1 John Doe p/98765432 e/johnd@gmail.com
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  update 1 Valid Name 12345 e/valid@email.butPhonePrefixMissing]
+|| Invalid command format: update 
+|| update: Updates a person identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX NAME p/PHONE_NUMBER e/EMAIL
+|| 	Example: update 1 John Doe p/98765432 e/johnd@gmail.com
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  update -1 Adam Tan p/222222 e/adamT@gmail.com]
+|| Invalid command format: update 
+|| update: Updates a person identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX NAME p/PHONE_NUMBER e/EMAIL
+|| 	Example: update 1 John Doe p/98765432 e/johnd@gmail.com
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  update 0 Adam Tan p/222222 e/adamT@gmail.com]
+|| Invalid command format: update 
+|| update: Updates a person identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX NAME p/PHONE_NUMBER e/EMAIL
+|| 	Example: update 1 John Doe p/98765432 e/johnd@gmail.com
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  update 3 Adam Tan p/222222 e/adamT@gmail.com]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  update 1 []\[;] p/12345 e/valid@e.mail]
+|| Invalid command format: update 
+|| update: Updates a person identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX NAME p/PHONE_NUMBER e/EMAIL
+|| 	Example: update 1 John Doe p/98765432 e/johnd@gmail.com
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  update 1 Valid Name p/not_numbers e/valid@e.mail]
+|| Invalid command format: update 
+|| update: Updates a person identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX NAME p/PHONE_NUMBER e/EMAIL
+|| 	Example: update 1 John Doe p/98765432 e/johnd@gmail.com
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  update 1 Valid Name p/12345 e/notAnEmail]
+|| Invalid command format: update 
+|| update: Updates a person identified by the index number used in the last find/list call.
+|| 	Parameters: INDEX NAME p/PHONE_NUMBER e/EMAIL
+|| 	Example: update 1 John Doe p/98765432 e/johnd@gmail.com
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  update 1 Adam Tan p/222222 e/adamT@gmail.com]
+|| Updated Person: Adam Tan  Phone Number: 222222  Email: adamT@gmail.com
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Tan  Phone Number: 222222  Email: adamT@gmail.com
+|| 	2. Ned Choo  Phone Number: 222222  Email: nedchoo@nus.edu.sg
+|| 
+|| 2 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  update 2 Adam Ban p/222222 e/adamB@gmail.com]
+|| Updated Person: Adam Ban  Phone Number: 222222  Email: adamB@gmail.com
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Tan  Phone Number: 222222  Email: adamT@gmail.com
+|| 	2. Adam Ban  Phone Number: 222222  Email: adamB@gmail.com
+|| 
+|| 2 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  update 1 Charlie Dickson e/charlie.d@nus.edu.sg p/333333]
+|| Updated Person: Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
+|| 	2. Adam Ban  Phone Number: 222222  Email: adamB@gmail.com
+|| 
+|| 2 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  update 2 Dickson Ee e/dickson@nus.edu.sg p/444444]
+|| Updated Person: Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
+|| 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 
+|| 2 persons found!
 || ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book... Good bye!
